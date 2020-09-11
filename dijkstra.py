@@ -21,7 +21,7 @@ def dijkstra_raw(edges, from_node, to_node):
             for c, v2 in g.get(v1, ()):
                 if v2 not in seen:
                     heappush(q, (cost + c, v2, path))
-    return float("D"), []
+    return 1, []
 
 
 def dijkstra(edges, from_node, to_node):
@@ -94,14 +94,14 @@ def findway_1(from_node1, to_node1):
 
     edges = getedge(distanceGraph1)
     length, shortest_path = dijkstra(edges, from_node1, to_node1)
-    print('从 %s 到 %s 的最短路径:' % (from_node1 , to_node1 ), shortest_path, ' 最短路长为:', length+1)
+    print('关卡 1 中从 %s 到 %s 的最短路径:' % (from_node1 , to_node1 ), shortest_path, ' 最短路长为:', length+1)
 
 
 def findway_2(from_node2, to_node2):
     distanceGraph2 = \
         [[0, 1, D, D, D, D, D, 1, 1, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D,
           D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D],
-         [1, 0, 1, D, D, D, D, D, 1, 1, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D,
+         [1, 0, 1, D, D, D, D, D, D, 1, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D,
           D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D],
          [D, 1, 0, 1, D, D, D, D, D, 1, 1, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D,
           D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D],
@@ -113,108 +113,108 @@ def findway_2(from_node2, to_node2):
           D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D],
          [D, D, D, D, D, 1, 0, 1, D, D, D, D, D, 1, 1, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D,
           D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D],
-         [1, D, D, D, D, D, 1, 0, 1, D, D, D, D, D, 1, 1, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D,
+         [1, D, D, D, D, D, 1, 0, 1, D, D, D, D, D, D, 1, 1, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D,
           D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D],
-         [1, 1, D, D, D, D, D, 1, 0, 1, D, D, D, D, D, 1, 1, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D,
+         [1, 1, D, D, D, D, D, 1, 0, 1, D, D, D, D, D, D, 1, 1, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D,
           D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D],
-         [D, 1, 1, D, D, D, D, D, 1, 0, 1, D, D, D, D, D, 1, 1, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D,
+         [D, 1, 1, D, D, D, D, D, D, 0, 1, D, D, D, D, D, D, 1, 1, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D,
           D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D],
-         [D, D, 1, 1, D, D, D, D, D, 1, 0, 1, D, D, D, D, D, 1, 1, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D,
+         [D, D, 1, 1, D, D, D, D, D, 1, 0, 1, D, D, D, D, D, D, 1, 1, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D,
           D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D],
-         [D, D, D, 1, 1, D, D, D, D, D, 1, 0, 1, D, D, D, D, D, 1, 1, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D,
+         [D, D, D, 1, 1, D, D, D, D, D, 1, 0, 1, D, D, D, D, D, D, 1, 1, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D,
           D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D],
-         [D, D, D, D, 1, 1, D, D, D, D, D, 1, 0, 1, D, D, D, D, D, 1, 1, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D,
+         [D, D, D, D, 1, 1, D, D, D, D, D, 1, 0, 1, D, D, D, D, D, D, 1, 1, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D,
           D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D],
-         [D, D, D, D, D, 1, 1, D, D, D, D, D, 1, 0, 1, D, D, D, D, D, 1, 1, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D,
+         [D, D, D, D, D, 1, 1, D, D, D, D, D, 1, 0, 1, D, D, D, D, D, D, 1, 1, D, D, D, D, D, D, D, D, D, D, D, D, D, D,
           D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D],
-         [D, D, D, D, D, D, 1, 1, D, D, D, D, D, 1, 0, 1, D, D, D, D, D, 1, 1, D, D, D, D, D, D, D, D, D, D, D, D, D, D,
+         [D, D, D, D, D, D, 1, 1, D, D, D, D, D, 1, 0, D, D, D, D, D, D, D, 1, 1, D, D, D, D, D, D, D, D, D, D, D, D, D,
           D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D],
-         [D, D, D, D, D, D, D, 1, 1, D, D, D, D, D, 1, 0, 1, D, D, D, D, D, 1, 1, D, D, D, D, D, D, D, D, D, D, D, D, D,
+         [D, D, D, D, D, D, 1, 1, 1, D, D, D, D, D, 1, 0, 1, D, D, D, D, D, 1, 1, 1, D, D, D, D, D, D, D, D, D, D, D, D,
           D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D],
-         [D, D, D, D, D, D, D, D, 1, 1, D, D, D, D, D, 1, 0, 1, D, D, D, D, D, 1, 1, D, D, D, D, D, D, D, D, D, D, D, D,
+         [D, D, D, D, D, D, D, 1, 1, D, D, D, D, D, D, 1, 0, 1, D, D, D, D, D, 1, 1, D, D, D, D, D, D, D, D, D, D, D, D,
           D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D],
-         [D, D, D, D, D, D, D, D, D, 1, 1, D, D, D, D, D, 1, 0, 1, D, D, D, D, D, 1, 1, D, D, D, D, D, D, D, D, D, D, D,
+         [D, D, D, D, D, D, D, D, D, 1, D, D, D, D, D, D, 1, 0, 1, D, D, D, D, D, D, 1, D, D, D, D, D, D, D, D, D, D, D,
           D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D],
-         [D, D, D, D, D, D, D, D, D, D, 1, 1, D, D, D, D, D, 1, 0, 1, D, D, D, D, D, 1, 1, D, D, D, D, D, D, D, D, D, D,
+         [D, D, D, D, D, D, D, D, D, 1, 1, D, D, D, D, D, D, 1, 0, 1, D, D, D, D, D, 1, 1, D, D, D, D, D, D, D, D, D, D,
           D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D],
-         [D, D, D, D, D, D, D, D, D, D, D, 1, 1, D, D, D, D, D, 1, 0, 1, D, D, D, D, D, 1, 1, D, D, D, D, D, D, D, D, D,
+         [D, D, D, D, D, D, D, D, D, D, 1, 1, D, D, D, D, D, D, 1, 0, 1, D, D, D, D, D, 1, 1, D, D, D, D, D, D, D, D, D,
           D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D],
-         [D, D, D, D, D, D, D, D, D, D, D, D, 1, 1, D, D, D, D, D, 1, 0, 1, D, D, D, D, D, 1, 1, D, D, D, D, D, D, D, D,
+         [D, D, D, D, D, D, D, D, D, D, D, 1, 1, D, D, D, D, D, D, 1, 0, 1, D, D, D, D, D, 1, 1, D, D, D, D, D, D, D, D,
           D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D],
-         [D, D, D, D, D, D, D, D, D, D, D, D, D, 1, 1, D, D, D, D, D, 1, 0, 1, D, D, D, D, D, 1, 1, D, D, D, D, D, D, D,
+         [D, D, D, D, D, D, D, D, D, D, D, D, 1, 1, D, D, D, D, D, D, 1, 0, 1, D, D, D, D, D, 1, 1, D, D, D, D, D, D, D,
           D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D],
-         [D, D, D, D, D, D, D, D, D, D, D, D, D, D, 1, 1, D, D, D, D, D, 1, 0, 1, D, D, D, D, D, 1, 1, D, D, D, D, D, D,
+         [D, D, D, D, D, D, D, D, D, D, D, D, D, 1, 1, 1, D, D, D, D, D, 1, 0, 1, D, D, D, D, D, 1, 1, D, D, D, D, D, D,
           D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D],
-         [D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, 1, 1, D, D, D, D, D, 1, 0, 1, D, D, D, D, D, 1, 1, D, D, D, D, D,
+         [D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, 1, D, D, D, D, D, 1, 0, 1, D, D, D, D, D, D, 1, 1, D, D, D, D,
           D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D],
-         [D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, 1, 1, D, D, D, D, D, 1, 0, 1, D, D, D, D, D, 1, 1, D, D, D, D,
+         [D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, 1, 1, D, D, D, D, D, 1, 0, 1, D, D, D, D, D, D, 1, 1, D, D, D,
           D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D],
-         [D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, 1, 1, D, D, D, D, D, 1, 0, 1, D, D, D, D, D, 1, 1, D, D, D,
+         [D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, 1, 1, D, D, D, D, D, D, 0, 1, D, D, D, D, D, D, 1, 1, D, D,
           D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D],
-         [D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, 1, 1, D, D, D, D, D, 1, 0, 1, D, D, D, D, D, 1, 1, D, D,
+         [D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, 1, 1, D, D, D, D, D, 1, 0, 1, D, D, D, D, D, D, 1, 1, D,
           D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D],
-         [D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, 1, 1, D, D, D, D, D, 1, 0, 1, D, D, D, D, D, 1, 1, D,
+         [D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, 1, 1, D, D, D, D, D, 1, 0, 1, D, D, D, D, D, D, 1, 1,
           D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D],
-         [D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, 1, 1, D, D, D, D, D, 1, 0, 1, D, D, D, D, D, 1, 1,
-          D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D],
-         [D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, 1, 1, D, D, D, D, D, 1, 0, 1, D, D, D, D, D, 1,
+         [D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, 1, 1, D, D, D, D, D, 1, 0, 1, D, D, D, D, D, D, 1,
           1, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D],
-         [D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, 1, 1, D, D, D, D, D, 1, 0, 1, D, D, D, D, D,
+         [D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, 1, 1, D, D, D, D, D, 1, 0, 1, D, D, D, D, D, D,
           1, 1, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D],
-         [D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, 1, 1, D, D, D, D, D, 1, 0, 1, D, D, D, D,
+         [D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, 1, 1, D, D, D, D, D, 1, 0, D, D, D, D, D, D,
           D, 1, 1, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D],
-         [D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, 1, 1, D, D, D, D, D, 1, 0, 1, D, D, D,
+         [D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, 1, 1, 1, D, D, D, D, D, 1, 0, 1, D, D, D, D,
+          D, 1, 1, 1, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D],
+         [D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, 1, 1, D, D, D, D, D, D, 1, 0, 1, D, D, D,
           D, D, 1, 1, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D],
-         [D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, 1, 1, D, D, D, D, D, 1, 0, 1, D, D,
-          D, D, D, 1, 1, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D],
-         [D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, 1, 1, D, D, D, D, D, 1, 0, 1, D,
+         [D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, 1, D, D, D, D, D, D, 1, 0, 1, D, D,
+          D, D, D, D, 1, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D],
+         [D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, 1, 1, D, D, D, D, D, D, 1, 0, 1, D,
           D, D, D, D, 1, 1, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D],
-         [D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, 1, 1, D, D, D, D, D, 1, 0, 1,
+         [D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, 1, 1, D, D, D, D, D, D, 1, 0, 1,
           D, D, D, D, D, 1, 1, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D],
-         [D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, 1, 1, D, D, D, D, D, 1, 0,
+         [D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, 1, 1, D, D, D, D, D, D, 1, 0,
           1, D, D, D, D, D, 1, 1, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D],
-         [D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, 1, 1, D, D, D, D, D, 1,
+         [D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, 1, 1, D, D, D, D, D, D, 1,
           0, 1, D, D, D, D, D, 1, 1, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D],
-         [D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, 1, 1, D, D, D, D, D,
+         [D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, 1, 1, 1, D, D, D, D, D,
           1, 0, 1, D, D, D, D, D, 1, 1, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D],
-         [D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, 1, 1, D, D, D, D,
-          D, 1, 0, 1, D, D, D, D, D, 1, 1, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D],
+         [D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, 1, D, D, D, D,
+          D, 1, 0, 1, D, D, D, D, D, D, 1, 1, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D],
          [D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, 1, 1, D, D, D,
-          D, D, 1, 0, 1, D, D, D, D, D, 1, 1, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D],
+          D, D, 1, 0, 1, D, D, D, D, D, D, 1, 1, D, D, D, D, D, D, D, D, D, D, D, D, D, D],
          [D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, 1, 1, D, D,
-          D, D, D, 1, 0, 1, D, D, D, D, D, 1, 1, D, D, D, D, D, D, D, D, D, D, D, D, D, D],
+          D, D, D, D, 0, 1, D, D, D, D, D, D, 1, 1, D, D, D, D, D, D, D, D, D, D, D, D, D],
          [D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, 1, 1, D,
-          D, D, D, D, 1, 0, 1, D, D, D, D, D, 1, 1, D, D, D, D, D, D, D, D, D, D, D, D, D],
+          D, D, D, D, 1, 0, 1, D, D, D, D, D, D, 1, 1, D, D, D, D, D, D, D, D, D, D, D, D],
          [D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, 1, 1,
-          D, D, D, D, D, 1, 0, 1, D, D, D, D, D, 1, 1, D, D, D, D, D, D, D, D, D, D, D, D],
+          D, D, D, D, D, 1, 0, 1, D, D, D, D, D, D, 1, 1, D, D, D, D, D, D, D, D, D, D, D],
          [D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, 1,
-          1, D, D, D, D, D, 1, 0, 1, D, D, D, D, D, 1, 1, D, D, D, D, D, D, D, D, D, D, D],
+          1, D, D, D, D, D, 1, 0, 1, D, D, D, D, D, D, 1, 1, D, D, D, D, D, D, D, D, D, D],
          [D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D,
-          1, 1, D, D, D, D, D, 1, 0, 1, D, D, D, D, D, 1, 1, D, D, D, D, D, D, D, D, D, D],
+          1, 1, D, D, D, D, D, 1, 0, 1, D, D, D, D, D, D, 1, 1, D, D, D, D, D, D, D, D, D],
          [D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D,
-          D, 1, 1, D, D, D, D, D, 1, 0, 1, D, D, D, D, D, 1, 1, D, D, D, D, D, D, D, D, D],
+          D, 1, 1, D, D, D, D, D, 1, 0, D, D, D, D, D, D, D, 1, 1, D, D, D, D, D, D, D, D],
          [D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D,
-          D, D, 1, 1, D, D, D, D, D, 1, 0, 1, D, D, D, D, D, 1, 1, D, D, D, D, D, D, D, D],
+          D, 1, 1, 1, D, D, D, D, D, 1, 0, 1, D, D, D, D, D, 1, 1, 1, D, D, D, D, D, D, D],
          [D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D,
-          D, D, D, 1, 1, D, D, D, D, D, 1, 0, 1, D, D, D, D, D, 1, 1, D, D, D, D, D, D, D],
+          D, D, 1, 1, D, D, D, D, D, D, 1, 0, 1, D, D, D, D, D, 1, 1, D, D, D, D, D, D, D],
          [D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D,
-          D, D, D, D, 1, 1, D, D, D, D, D, 1, 0, 1, D, D, D, D, D, 1, 1, D, D, D, D, D, D],
+          D, D, D, D, 1, D, D, D, D, D, D, 1, 0, 1, D, D, D, D, D, D, 1, D, D, D, D, D, D],
          [D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D,
-          D, D, D, D, D, 1, 1, D, D, D, D, D, 1, 0, 1, D, D, D, D, D, 1, 1, D, D, D, D, D],
+          D, D, D, D, 1, 1, D, D, D, D, D, D, 1, 0, 1, D, D, D, D, D, 1, 1, D, D, D, D, D],
          [D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D,
-          D, D, D, D, D, D, 1, 1, D, D, D, D, D, 1, 0, 1, D, D, D, D, D, 1, 1, D, D, D, D],
+          D, D, D, D, D, 1, 1, D, D, D, D, D, D, 1, 0, 1, D, D, D, D, D, 1, 1, D, D, D, D],
          [D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D,
-          D, D, D, D, D, D, D, 1, 1, D, D, D, D, D, 1, 0, 1, D, D, D, D, D, 1, 1, D, D, D],
+          D, D, D, D, D, D, 1, 1, D, D, D, D, D, D, 1, 0, 1, D, D, D, D, D, 1, 1, D, D, D],
          [D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D,
-          D, D, D, D, D, D, D, D, 1, 1, D, D, D, D, D, 1, 0, 1, D, D, D, D, D, 1, 1, D, D],
+          D, D, D, D, D, D, D, 1, 1, D, D, D, D, D, D, 1, 0, 1, D, D, D, D, D, 1, 1, D, D],
          [D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D,
-          D, D, D, D, D, D, D, D, D, 1, 1, D, D, D, D, D, 1, 0, 1, D, D, D, D, D, 1, 1, D],
+          D, D, D, D, D, D, D, D, 1, 1, 1, D, D, D, D, D, 1, 0, 1, D, D, D, D, D, 1, 1, 1],
          [D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D,
-          D, D, D, D, D, D, D, D, D, D, 1, 1, D, D, D, D, D, 1, 0, 1, D, D, D, D, D, 1, D],
+          D, D, D, D, D, D, D, D, D, D, D, 1, D, D, D, D, D, 1, 0, 1, D, D, D, D, D, 1, 1],
          [D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D,
-          D, D, D, D, D, D, D, D, D, D, D, 1, 1, D, D, D, D, D, 1, 0, 1, D, D, D, D, D, D],
+          D, D, D, D, D, D, D, D, D, D, D, 1, 1, D, D, D, D, D, 1, 0, 1, D, D, D, D, D, 1],
          [D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D,
-          D, D, D, D, D, D, D, D, D, D, D, D, 1, 1, D, D, D, D, D, 1, 0, 1, D, D, D, D, D],
+          D, D, D, D, D, D, D, D, D, D, D, D, 1, 1, D, D, D, D, D, D, 0, 1, D, D, D, D, D],
          [D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D,
           D, D, D, D, D, D, D, D, D, D, D, D, D, 1, 1, D, D, D, D, D, 1, 0, 1, D, D, D, D],
          [D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D,
@@ -224,13 +224,13 @@ def findway_2(from_node2, to_node2):
          [D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D,
           D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, 1, 1, D, D, D, D, D, 1, 0, 1, D],
          [D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D,
-          D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, 1, 1, D, D, D, D, D, 1, 0, D],
+          D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, 1, 1, D, D, D, D, D, 1, 0, 1],
          [D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D,
-          D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, 1, 1, D, D, D, D, D, 1, D]]
+          D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, 1, 1, 1, D, D, D, D, D, 1, D]]
 
     edges = getedge(distanceGraph2)
     length, shortest_path = dijkstra(edges, from_node2, to_node2)
-    print('从 %s 到 %s 的最短路径:' % (from_node2, to_node2), shortest_path, ' 最短路长为:', length+1)
+    print('关卡 2 中从 %s 到 %s 的最短路径:' % (from_node2, to_node2), shortest_path, ' 最短路长为:', length+1)
 
 
 def findway_3(from_node3, to_node3):
@@ -251,7 +251,7 @@ def findway_3(from_node3, to_node3):
 
     edges = getedge(distanceGraph3)
     length, shortest_path = dijkstra(edges, from_node3, to_node3)
-    print('从 %s 到 %s 的最短路径:' % (from_node3, to_node3), shortest_path, ' 最短路长为:', length+1)
+    print('关卡 3 中从 %s 到 %s 的最短路径:' % (from_node3, to_node3), shortest_path, ' 最短路长为:', length+1)
 
 
 def findway_4(from_node4, to_node4):
@@ -284,7 +284,7 @@ def findway_4(from_node4, to_node4):
 
     edges = getedge(distanceGraph4)
     length, shortest_path = dijkstra(edges, from_node4, to_node4)
-    print('从 %s 到 %s 的最短路径:' % (from_node4, to_node4), shortest_path, ' 最短路长为:', length+1)
+    print('关卡 4 中从 %s 到 %s 的最短路径:' % (from_node4, to_node4), shortest_path, ' 最短路长为:', length+1)
 
 
 def findway_5(from_node5, to_node5):
@@ -305,7 +305,7 @@ def findway_5(from_node5, to_node5):
 
     edges = getedge(distanceGraph5)
     length, shortest_path = dijkstra(edges, from_node5, to_node5)
-    print('从 %s 到 %s 的最短路径:' % (from_node5, to_node5), shortest_path, ' 最短路长为:', length+1)
+    print('关卡 5 中从 %s 到 %s 的最短路径:' % (from_node5, to_node5), shortest_path, ' 最短路长为:', length+1)
 
 
 def findway_6(from_node6, to_node6):
@@ -338,14 +338,14 @@ def findway_6(from_node6, to_node6):
 
     edges = getedge(distanceGraph6)
     length, shortest_path = dijkstra(edges, from_node6, to_node6)
-    print('从 %s 到 %s 的最短路径:' % (from_node6, to_node6), shortest_path, ' 最短路长为:', length+1)
+    print('关卡 6 中从 %s 到 %s 的最短路径:' % (from_node6, to_node6), shortest_path, ' 最短路长为:', length+1)
 
 
 if __name__=='__main__':
-    # findway_1(11, 26)
-    findway_2(7, 26)
-    # findway_3(2, 6)
-    # findway_4(2, 16)
-    # findway_5(2, 6)
-    # findway_6(2, 6)
+    findway_1(0, 26)
+    findway_2(0, 63)
+    findway_3(0, 12)
+    findway_4(0, 24)
+    findway_5(0, 12)
+    findway_6(0, 24)
 
