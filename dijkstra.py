@@ -1,6 +1,10 @@
+import csv
 from collections import defaultdict
 from heapq import *
+import pandas as pd
+import numpy as np
 
+D = float('inf')
 
 def dijkstra_raw(edges, from_node, to_node):
     g = defaultdict(list)
@@ -42,48 +46,55 @@ def dijkstra(edges, from_node, to_node):
     return len_shortest_path, ret_path
 
 
-if __name__=='__main__':
-    D = float('inf')
-    # distanceGraph1是表示拓扑的二维邻接矩阵
-    distanceGraph1 = \
-            [[0, 1, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, 1, D, D],
-             [1, 0, 1, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D],
-             [D, D, 0, 1, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, 1, D, D],
-             [D, D, 1, 0, 1, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, 1, 1, D, D],
-             [D, D, D, 1, 0, 1, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, 1, D, D, D],
-             [D, D, D, D, 1, 0, 1, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, 1, 1, D, D, D],
-             [D, D, D, D, D, 1, 0, 1, D, D, D, D, D, D, D, D, D, D, D, D, D, 1, D, D, D, D, D],
-             [D, D, D, D, D, D, 1, 0, 1, D, D, D, D, D, D, D, D, D, D, D, D, 1, D, D, D, D, D],
-             [D, D, D, D, D, D, D, 1, 0, 1, D, D, D, D, 1, 1, 1, D, D, D, 1, 1, D, D, D, D, D],
-             [D, D, D, D, D, D, D, 1, 1, 0, 1, D, 1, D, 1, D, D, D, D, D, D, D, D, D, D, D, D],
-             [D, D, D, D, D, D, D, D, D, 1, 0, 1, 1, D, D, D, D, D, D, D, D, D, D, D, D, D, D],
-             [D, D, D, D, D, D, D, D, D, D, 1, 0, 1, 1, D, D, D, D, D, D, D, D, D, D, D, D, D],
-             [D, D, D, D, D, D, D, D, D, 1, 1, 1, 0, 1, 1, D, D, D, D, D, D, D, D, D, D, D, D],
-             [D, D, D, D, D, D, D, D, D, D, D, 1, 1, 0, 1, 1, D, D, D, D, D, D, D, D, D, D, D],
-             [D, D, D, D, D, D, D, D, 1, 1, D, D, 1, 1, 0, 1, D, D, D, D, D, D, D, D, D, D, D],
-             [D, D, D, D, D, D, D, D, 1, D, D, D, D, 1, 1, 0, 1, 1, D, D, D, D, D, D, D, D, D],
-             [D, D, D, D, D, D, D, D, 1, D, D, D, D, D, D, 1, 0, 1, D, D, 1, D, D, D, D, D, D],
-             [D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, 1, 1, 0, 1, 1, 1, D, D, D, D, D, D],
-             [D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, 1, D, 1, 0, 1, D, D, D, D, D, D, D],
-             [D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, 1, 1, 0, 1, D, D, D, D, D, D],
-             [D, D, D, D, D, D, D, D, 1, D, D, D, D, D, D, D, 1, 1, D, 1, 0, 1, 1, D, D, D, 1],
-             [D, D, D, D, D, D, 1, 1, 1, D, D, D, D, D, D, D, D, D, D, D, 1, 0, 1, D, D, D, D],
-             [D, D, D, D, D, 1, D, D, D, D, D, D, D, D, D, D, D, D, D, D, 1, 1, 0, 1, D, 1, D],
-             [D, D, D, 1, 1, 1, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, 1, 0, 1, 1, D],
-             [1, D, 1, 1, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, 1, 0, 1, D],
-             [D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, 1, 1, 1, 0, 1],
-             [D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, 1, D, D, D, D, 1, 0]]
-
+def getedge(graph):
     # 读取拓扑，并生成给定拓扑中的所有边
     edges = []
-    for i in range(len(distanceGraph1)):
-        for j in range(len(distanceGraph1[0])):
-            if i != j and distanceGraph1[i][j] != D:
-                # (i,j) 是一个链接;distanceGraph1[i][j]这里是1，链接的长度(i,j)
-                edges.append((i, j, distanceGraph1[i][j]))
+    for i in range(len(graph)):
+        for j in range(len(graph[0])):
+            if i != j and graph[i][j] != D:
+                # (i,j) 是一个链接;graph[i][j]这里是1，链接的长度(i,j)
+                edges.append((i, j, graph[i][j]))
+    return edges
 
-    fromPoint, toPoint = 0, 26
-    length, Shortest_path = dijkstra(edges, fromPoint, toPoint)
-    # print('长度:', length)
-    print('从 %s 到 %s的最短路径:' %(fromPoint+1, toPoint+1),  Shortest_path)
+def findway_1(from_node1, to_node1):
+    # distanceGraph1是表示拓扑的二维邻接矩阵
+    distanceGraph1 = \
+        [[0, 1, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, 1, D, D],
+         [1, 0, 1, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D],
+         [D, D, 0, 1, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, 1, D, D],
+         [D, D, 1, 0, 1, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, 1, 1, D, D],
+         [D, D, D, 1, 0, 1, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, 1, D, D, D],
+         [D, D, D, D, 1, 0, 1, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, 1, 1, D, D, D],
+         [D, D, D, D, D, 1, 0, 1, D, D, D, D, D, D, D, D, D, D, D, D, D, 1, D, D, D, D, D],
+         [D, D, D, D, D, D, 1, 0, 1, D, D, D, D, D, D, D, D, D, D, D, D, 1, D, D, D, D, D],
+         [D, D, D, D, D, D, D, 1, 0, 1, D, D, D, D, 1, 1, 1, D, D, D, 1, 1, D, D, D, D, D],
+         [D, D, D, D, D, D, D, 1, 1, 0, 1, D, 1, D, 1, D, D, D, D, D, D, D, D, D, D, D, D],
+         [D, D, D, D, D, D, D, D, D, 1, 0, 1, 1, D, D, D, D, D, D, D, D, D, D, D, D, D, D],
+         [D, D, D, D, D, D, D, D, D, D, 1, 0, 1, 1, D, D, D, D, D, D, D, D, D, D, D, D, D],
+         [D, D, D, D, D, D, D, D, D, 1, 1, 1, 0, 1, 1, D, D, D, D, D, D, D, D, D, D, D, D],
+         [D, D, D, D, D, D, D, D, D, D, D, 1, 1, 0, 1, 1, D, D, D, D, D, D, D, D, D, D, D],
+         [D, D, D, D, D, D, D, D, 1, 1, D, D, 1, 1, 0, 1, D, D, D, D, D, D, D, D, D, D, D],
+         [D, D, D, D, D, D, D, D, 1, D, D, D, D, 1, 1, 0, 1, 1, D, D, D, D, D, D, D, D, D],
+         [D, D, D, D, D, D, D, D, 1, D, D, D, D, D, D, 1, 0, 1, D, D, 1, D, D, D, D, D, D],
+         [D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, 1, 1, 0, 1, 1, 1, D, D, D, D, D, D],
+         [D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, 1, D, 1, 0, 1, D, D, D, D, D, D, D],
+         [D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, 1, 1, 0, 1, D, D, D, D, D, D],
+         [D, D, D, D, D, D, D, D, 1, D, D, D, D, D, D, D, 1, 1, D, 1, 0, 1, 1, D, D, D, 1],
+         [D, D, D, D, D, D, 1, 1, 1, D, D, D, D, D, D, D, D, D, D, D, 1, 0, 1, D, D, D, D],
+         [D, D, D, D, D, 1, D, D, D, D, D, D, D, D, D, D, D, D, D, D, 1, 1, 0, 1, D, 1, D],
+         [D, D, D, 1, 1, 1, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, 1, 0, 1, 1, D],
+         [1, D, 1, 1, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, 1, 0, 1, D],
+         [D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, 1, 1, 1, 0, 1],
+         [D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, 1, D, D, D, D, 1, 0]]
+
+    # source_data = pd.read_csv('./distanceGraph.csv', header=None)
+    # distanceGraph1 = source_data.values.tolist()
+    # print(distanceGraph1)
+
+    edges = getedge(distanceGraph1)
+    length, shortest_path = dijkstra(edges, from_node1, to_node1)
+    print('从 %s 到 %s 的最短路径:' % (from_node1 + 1, to_node1 + 1), shortest_path)
+
+if __name__=='__main__':
+    findway_1(0,26)
 
