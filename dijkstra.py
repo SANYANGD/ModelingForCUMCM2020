@@ -286,9 +286,66 @@ def findway_4(from_node4, to_node4):
     length, shortest_path = dijkstra(edges, from_node4, to_node4)
     print('从 %s 到 %s 的最短路径:' % (from_node4, to_node4), shortest_path, ' 最短路长为:', length+1)
 
+
+def findway_5(from_node5, to_node5):
+    distanceGraph5 = \
+        [[0, 1, D, 1, 1, D, D, D, D, D, D, D, D],
+         [1, 0, 1, 1, D, D, D, D, D, D, D, D, D],
+         [D, 1, 0, 1, D, D, D, 1, 1, D, D, D, D],
+         [1, 1, 1, 0, 1, 1, 1, D, D, D, D, D, D],
+         [1, D, D, 1, 0, 1, D, D, D, D, D, D, D],
+         [D, D, D, 1, 1, 0, 1, D, D, D, D, 1, 1],
+         [D, D, D, 1, D, 1, 0, D, D, D, 1, 1, D],
+         [D, D, 1, D, D, D, D, 0, 1, D, D, D, D],
+         [D, D, 1, D, D, D, D, 1, 0, 1, 1, D, D],
+         [D, D, D, D, D, D, D, D, 1, 0, 1, D, 1],
+         [D, D, D, D, D, D, 1, D, 1, 1, 0, 1, 1],
+         [D, D, D, D, D, 1, 1, D, D, D, 1, 0, 1],
+         [D, D, D, D, D, 1, D, D, D, 1, 1, 1, 0]]
+
+    edges = getedge(distanceGraph5)
+    length, shortest_path = dijkstra(edges, from_node5, to_node5)
+    print('从 %s 到 %s 的最短路径:' % (from_node5, to_node5), shortest_path, ' 最短路长为:', length+1)
+
+
+def findway_6(from_node6, to_node6):
+    distanceGraph6 = \
+        [[0, 1, D, D, D, 1, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D],
+         [1, 0, D, D, D, D, 1, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D],
+         [D, 1, 0, 1, D, D, D, 1, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D],
+         [D, D, 1, 0, 1, D, D, D, 1, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D],
+         [D, D, D, 1, 0, 1, D, D, D, 1, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D],
+         [1, D, D, D, D, 0, 1, D, D, D, 1, D, D, D, D, D, D, D, D, D, D, D, D, D, D],
+         [D, 1, D, D, D, 1, 0, 1, D, D, D, 1, D, D, D, D, D, D, D, D, D, D, D, D, D],
+         [D, D, 1, D, D, D, 1, 0, 1, D, D, D, 1, D, D, D, D, D, D, D, D, D, D, D, D],
+         [D, D, D, 1, D, D, D, 1, 0, 1, D, D, D, 1, D, D, D, D, D, D, D, D, D, D, D],
+         [D, D, D, D, 1, D, D, D, 1, 0, D, D, D, D, 1, D, D, D, D, D, D, D, D, D, D],
+         [D, D, D, D, D, 1, D, D, D, D, 0, 1, D, D, D, 1, D, D, D, D, D, D, D, D, D],
+         [D, D, D, D, D, D, 1, D, D, D, 1, 0, 1, D, D, D, 1, D, D, D, D, D, D, D, D],
+         [D, D, D, D, D, D, D, 1, D, D, D, 1, 0, 1, D, D, D, 1, D, D, D, D, D, D, D],
+         [D, D, D, D, D, D, D, D, 1, D, D, D, 1, 0, 1, D, D, D, 1, D, D, D, D, D, D],
+         [D, D, D, D, D, D, D, D, D, 1, D, D, D, 1, 0, D, D, D, D, 1, D, D, D, D, D],
+         [D, D, D, D, D, D, D, D, D, D, 1, D, D, D, D, 0, 1, D, D, D, 1, D, D, D, D],
+         [D, D, D, D, D, D, D, D, D, D, D, 1, D, D, D, 1, 0, 1, D, D, D, 1, D, D, D],
+         [D, D, D, D, D, D, D, D, D, D, D, D, 1, D, D, D, 1, 0, 1, D, D, D, 1, D, D],
+         [D, D, D, D, D, D, D, D, D, D, D, D, D, 1, D, D, D, 1, 0, 1, D, D, D, 1, D],
+         [D, D, D, D, D, D, D, D, D, D, D, D, D, D, 1, D, D, D, 1, 0, D, D, D, D, 1],
+         [D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, 1, D, D, D, D, 0, 1, D, D, D],
+         [D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, 1, D, D, D, 1, 0, 1, D, D],
+         [D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, 1, D, D, D, 1, 0, 1, D],
+         [D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, 1, D, D, D, 1, 0, 1],
+         [D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, 1, D, D, D, 1, 0]]
+
+    edges = getedge(distanceGraph6)
+    length, shortest_path = dijkstra(edges, from_node6, to_node6)
+    print('从 %s 到 %s 的最短路径:' % (from_node6, to_node6), shortest_path, ' 最短路长为:', length+1)
+
+
 if __name__=='__main__':
     # findway_1(11, 26)
-    # findway_2(7, 26)
+    findway_2(7, 26)
     # findway_3(2, 6)
-    findway_4(2, 16)
+    # findway_4(2, 16)
+    # findway_5(2, 6)
+    # findway_6(2, 6)
 
