@@ -341,7 +341,8 @@ def findway_6(from_node6, to_node6):
     print('关卡 6 中从 %s 到 %s 的最短路径:' % (from_node6, to_node6), shortest_path, ' 最短路长为:', length+1)
 
 
-if __name__=='__main__':
+if __name__ == '__main__':
+    # 节点为偏移量表示，地图中的n区域对应本程序中的节点n-1
     findway_1(0, 26)
     findway_2(0, 63)
     findway_3(0, 12)
