@@ -22,10 +22,6 @@ END_NOTE = 13
 def countPlayersMoney(weather, player, route, routeOther, act, actOther, playerNum):
     for i in range(len(route)):
 
-        # 到终点后停止
-        if route[i] == END_NOTE:
-            break
-
         # 晴天
         if weather[i] == 0:
             if route[i - 1] == route[i]:
@@ -77,6 +73,10 @@ def countPlayersMoney(weather, player, route, routeOther, act, actOther, playerN
                     player['water'] += BASIC_WATER_CONSUMPTION_1 * 2
                     player['food'] += BASIC_FOOD_CONSUMPTION_1 * 2
 
+        # 到终点后停止
+        if route[i] == END_NOTE:
+            break
+
     player['money'] = player['money'] - player['water'] * WATER_PRICE_PERCASE - player['food'] * FOOD_PRICE_PERCASE
     # print(player['water'], player['food'], player['money'])
     return player
@@ -92,35 +92,43 @@ def main():
               [2, 2, 3, 9, 9, 10, 13, 0, 0, 0],
               [2, 3, 9, 9, 9, 10, 13, 0, 0, 0],
               [2, 2, 3, 9, 9, 9, 10, 13, 0, 0],
-              [2, 3, 9, 9, 9, 9, 10, 13, 0, 0]]
+              [2, 3, 9, 9, 9, 9, 10, 13, 0, 0],
+              [5, 6, 13, 0, 0, 0, 0, 0, 0, 0],
+              [4, 7, 12, 13, 0, 0, 0, 0, 0, 0]]
     actA = [[0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
             [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
             [0, 0, 0, 1, 0, 0, 0, 0, 0, 0],
             [0, 0, 0, 0, 1, 0, 0, 0, 0, 0],
             [0, 0, 0, 1, 1, 0, 0, 0, 0, 0],
             [0, 0, 0, 0, 1, 1, 0, 0, 0, 0],
-            [0, 0, 0, 1, 1, 1, 0, 0, 0, 0]]
+            [0, 0, 0, 1, 1, 1, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]]
     routeB = [[4, 3, 9, 11, 13, 0, 0, 0, 0, 0],
               [4, 4, 3, 9, 11, 13, 0, 0, 0, 0],
               [4, 3, 9, 9, 11, 13, 0, 0, 0, 0],
               [4, 4, 3, 9, 9, 11, 13, 0, 0, 0],
               [4, 3, 9, 9, 9, 11, 13, 0, 0, 0],
               [4, 4, 3, 9, 9, 9, 11, 13, 0, 0],
-              [4, 3, 9, 9, 9, 9, 11, 13, 0, 0]]
+              [4, 3, 9, 9, 9, 9, 11, 13, 0, 0],
+              [5, 6, 13, 0, 0, 0, 0, 0, 0, 0],
+              [4, 7, 12, 13, 0, 0, 0, 0, 0, 0]]
     actB = [[0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
             [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
             [0, 0, 0, 1, 0, 0, 0, 0, 0, 0],
             [0, 0, 0, 0, 1, 0, 0, 0, 0, 0],
             [0, 0, 0, 1, 1, 0, 0, 0, 0, 0],
             [0, 0, 0, 0, 1, 1, 0, 0, 0, 0],
-            [0, 0, 0, 1, 1, 1, 0, 0, 0, 0]]
+            [0, 0, 0, 1, 1, 1, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]]
 
     for i in range(len(routeA)):
         for j in range(len(routeB)):
             playerA = countPlayersMoney(weather, {'water': 0, 'food': 0, 'money': 10000}, routeA[i], routeB[j],
                                         actA[i], actB[j], playerNum)
-            playerB = countPlayersMoney(weather, {'water': 0, 'food': 0, 'money': 10000}, routeB[i], routeA[j],
-                                        actB[i], actA[j], playerNum)
+            playerB = countPlayersMoney(weather, {'water': 0, 'food': 0, 'money': 10000}, routeB[j], routeA[i],
+                                        actB[j], actA[i], playerNum)
             print('A为方案 %d ，B为方案 %d 时，两者结果。' % (i+1, j+1), 'playerA：', playerA, 'playerB：', playerB)
 
 
