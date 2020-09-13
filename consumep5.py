@@ -1,7 +1,3 @@
-"""
-input:
-output: money
-"""
 
 MAX_LOAD = 1200
 DAY = 10
