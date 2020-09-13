@@ -1,3 +1,11 @@
+#!/usr/bin/env python
+# -*-coding:utf-8-*-
+
+"""
+2020 CUMCM B题代码
+计算关卡五中不同路径组合的资金消耗情况
+Coder: 代春洋 胡文哲 刘子奕
+"""
 
 MAX_LOAD = 1200
 DAY = 10

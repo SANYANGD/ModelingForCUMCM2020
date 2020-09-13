@@ -1,3 +1,11 @@
+#!/usr/bin/env python
+# -*-coding:utf-8-*-
+
+"""
+2020 CUMCM B题代码
+构建天气变化的马尔科夫链以求得不同天气出现的概率
+Coder: 代春洋 胡文哲 刘子奕
+"""
 
 import numpy as np
 

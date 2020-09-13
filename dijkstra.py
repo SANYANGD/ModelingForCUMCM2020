@@ -1,3 +1,12 @@
+#!/usr/bin/env python
+# -*-coding:utf-8-*-
+
+"""
+2020 CUMCM B题代码
+使用Dijkstra求图的最短路径
+Coder: 代春洋 胡文哲 刘子奕
+"""
+
 import csv
 from collections import defaultdict
 from heapq import *
